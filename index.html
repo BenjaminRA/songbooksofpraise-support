@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support - Songbooks of Praise</title>
+  <link rel="icon" href="./icon.png" type="image/png">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --crimson: #8B1A1A;
+      --crimson-dark: #6B1212;
+      --crimson-light: #A52020;
+      --gold: #C9A84C;
+      --cream: #F5F0E8;
+      --cream-dark: #EDE6D6;
+      --text-dark: #1A1A1A;
+      --text-mid: #4A4A4A;
+      --text-light: #7A7A7A;
+      --white: #FFFFFF;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      background: var(--cream);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    /* HEADER */
+    header {
+      background: var(--crimson-dark);
+      padding: 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      object-fit: cover;
+      display: block;
+      flex-shrink: 0;
+    }
+
+    .logo-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: 0.01em;
+      line-height: 1.2;
+    }
+
+    .logo-sub {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.65rem;
+      color: rgba(255, 255, 255, 0.6);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 400;
+    }
+
+    nav a {
+      color: rgba(255, 255, 255, 0.75);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      margin-left: 2rem;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--gold);
+    }
+
+    /* LANG SWITCHER */
+    .lang-btn {
+      margin-left: 2rem;
+      background: none;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: rgba(255, 255, 255, 0.65);
+      font-family: 'Lato', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      padding: 3px 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .lang-btn:hover {
+      color: var(--gold);
+      border-color: var(--gold);
+    }
+
+    .lang-btn.active {
+      background: var(--gold);
+      color: var(--crimson-dark);
+      border-color: var(--gold);
+    }
+
+    /* HERO */
+    .hero {
+      background: var(--crimson);
+      background-image:
+        radial-gradient(ellipse at 20% 50%, rgba(201, 168, 76, 0.08) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(255, 255, 255, 0.04) 0%, transparent 50%);
+      padding: 5rem 2rem 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: repeating-linear-gradient(0deg, transparent, transparent 40px,
+          rgba(255, 255, 255, 0.015) 40px, rgba(255, 255, 255, 0.015) 41px), repeating-linear-gradient(90deg, transparent, transparent 40px,
+          rgba(255, 255, 255, 0.015) 40px, rgba(255, 255, 255, 0.015) 41px);
+    }
+
+    .hero-content {
+      position: relative;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(201, 168, 76, 0.2);
+      border: 1px solid rgba(201, 168, 76, 0.4);
+      color: var(--gold);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 5px 16px;
+      border-radius: 20px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 1rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero p {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 1rem;
+      max-width: 500px;
+      margin: 0 auto 2.5rem;
+      font-weight: 300;
+    }
+
+    .hero-contact-btn {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--crimson-dark);
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.85rem 2.5rem;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: all 0.2s;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .hero-contact-btn:hover {
+      background: #e0bc5a;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
+    }
+
+    /* MAIN CONTENT */
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+
+    /* SECTION TITLES */
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--crimson-dark);
+      margin-bottom: 0.4rem;
+    }
+
+    .section-subtitle {
+      color: var(--text-light);
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+    }
+
+    .section-divider {
+      width: 40px;
+      height: 3px;
+      background: var(--gold);
+      margin-bottom: 2rem;
+      border-radius: 2px;
+    }
+
+    /* FAQ */
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 5rem;
+    }
+
+    @media (max-width: 700px) {
+      .faq-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+        padding: 0.85rem 1.25rem;
+      }
+
+      nav {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.25rem 0;
+      }
+
+      nav a {
+        margin-left: 0;
+        margin-right: 1.25rem;
+        font-size: 0.8rem;
+      }
+
+      .lang-btn {
+        margin-left: 0;
+        margin-right: 0.4rem;
+      }
+    }
+
+    .faq-item {
+      background: var(--white);
+      border-radius: 8px;
+      border: 1px solid rgba(139, 26, 26, 0.1);
+      overflow: hidden;
+      transition: box-shadow 0.2s;
+    }
+
+    .faq-item:hover {
+      box-shadow: 0 4px 20px rgba(139, 26, 26, 0.08);
+    }
+
+    .faq-question {
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      cursor: pointer;
+      gap: 1rem;
+      user-select: none;
+    }
+
+    .faq-question span {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--text-dark);
+      line-height: 1.4;
+    }
+
+    .faq-icon {
+      width: 22px;
+      height: 22px;
+      min-width: 22px;
+      border-radius: 50%;
+      background: var(--cream);
+      border: 1px solid rgba(139, 26, 26, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      color: var(--crimson);
+      font-weight: 700;
+      transition: all 0.2s;
+    }
+
+    .faq-item.open .faq-icon {
+      background: var(--crimson);
+      color: white;
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.2s;
+      font-size: 0.875rem;
+      color: var(--text-mid);
+      line-height: 1.7;
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 300px;
+      padding: 0 1.5rem 1.25rem;
+    }
+
+    /* FEATURES OVERVIEW */
+    .features-section {
+      margin-bottom: 5rem;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    @media (max-width: 700px) {
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .feature-card {
+      background: var(--white);
+      border-radius: 8px;
+      padding: 1.5rem;
+      border: 1px solid rgba(139, 26, 26, 0.08);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .feature-card:hover {
+      box-shadow: 0 6px 24px rgba(139, 26, 26, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .feature-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: var(--cream);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      margin-bottom: 1rem;
+    }
+
+    .feature-card h3 {
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 0.4rem;
+      color: var(--crimson-dark);
+    }
+
+    .feature-card p {
+      font-size: 0.82rem;
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    /* CONTACT */
+    .contact-section {
+      background: var(--crimson-dark);
+      border-radius: 12px;
+      padding: 3rem;
+      text-align: center;
+      background-image: radial-gradient(ellipse at 30% 50%, rgba(201, 168, 76, 0.1) 0%, transparent 70%);
+      margin-bottom: 5rem;
+    }
+
+    .contact-section h2 {
+      font-family: 'Playfair Display', serif;
+      color: var(--white);
+      font-size: 1.8rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .contact-section p {
+      color: rgba(255, 255, 255, 0.65);
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+      max-width: 450px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .contact-form {
+      max-width: 500px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    @media (max-width: 500px) {
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .form-group {
+      margin-bottom: 0.75rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.6);
+      margin-bottom: 0.4rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 6px;
+      color: var(--white);
+      font-family: 'Lato', sans-serif;
+      font-size: 0.875rem;
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: rgba(255, 255, 255, 0.35);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--gold);
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .form-group select option {
+      background: var(--crimson-dark);
+      color: var(--white);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 0.9rem;
+      background: var(--gold);
+      color: var(--crimson-dark);
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-top: 0.5rem;
+    }
+
+    .submit-btn:hover {
+      background: #e0bc5a;
+      transform: translateY(-1px);
+    }
+
+    .success-msg {
+      display: none;
+      background: rgba(201, 168, 76, 0.15);
+      border: 1px solid rgba(201, 168, 76, 0.4);
+      color: var(--gold);
+      padding: 1rem;
+      border-radius: 6px;
+      text-align: center;
+      font-size: 0.875rem;
+      margin-top: 1rem;
+    }
+
+    .error-msg {
+      display: none;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 100, 100, 0.45);
+      color: #ffaaaa;
+      padding: 1rem;
+      border-radius: 6px;
+      text-align: center;
+      font-size: 0.875rem;
+      margin-top: 1rem;
+    }
+
+    /* DOWNLOAD BADGES */
+    .download-section {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .badges {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+
+    .store-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--text-dark);
+      color: var(--white);
+      padding: 0.65rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.2s;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .store-badge:hover {
+      background: var(--crimson-dark);
+      transform: translateY(-1px);
+    }
+
+    .store-badge .icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .store-badge .label {
+      text-align: left;
+    }
+
+    .store-badge .label small {
+      display: block;
+      font-size: 0.65rem;
+      opacity: 0.65;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .store-badge .label strong {
+      font-size: 0.9rem;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--crimson-dark);
+      color: rgba(255, 255, 255, 0.5);
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.8rem;
+    }
+
+    footer a {
+      color: rgba(255, 255, 255, 0.6);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: var(--gold);
+    }
+
+    .footer-links {
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-links a {
+      margin: 0 1rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="header-inner">
+      <a class="logo" href="#">
+        <img src="./icon.png" alt="Songbooks of Praise" class="logo-icon">
+        <div>
+          <div class="logo-text">Songbooks of Praise</div>
+          <div class="logo-sub" data-i18n="logo_sub">Support Center</div>
+        </div>
+      </a>
+      <nav>
+        <a href="#faq" data-i18n="nav_faq">FAQ</a>
+        <a href="#features" data-i18n="nav_features">Features</a>
+        <a href="#contact" data-i18n="nav_contact">Contact</a>
+        <button class="lang-btn active" id="btn-en" onclick="applyLanguage('en')">EN</button>
+        <button class="lang-btn" id="btn-es" onclick="applyLanguage('es')">ES</button>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-badge" data-i18n="hero_badge">Support Center</div>
+      <h1 data-i18n="hero_h1">How can we help you?</h1>
+      <p data-i18n="hero_p">Find answers to common questions or reach out to us directly. We are here to help you get
+        the most out of Songbooks of Praise.</p>
+      <a href="#contact" class="hero-contact-btn" data-i18n="hero_btn">Contact Support</a>
+    </div>
+  </section>
+
+  <main>
+
+    <!-- FAQ -->
+    <section id="faq" style="margin-bottom: 5rem;">
+      <div class="section-title" data-i18n="faq_title">Frequently Asked Questions</div>
+      <div class="section-divider"></div>
+
+      <div class="faq-grid">
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span data-i18n="faq_q1">How do I install a new songbook?</span>
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-answer" data-i18n="faq_a1">Go to the Songbooks tab at the bottom of the screen and tap the
+            Available tab. You will see all songbooks ready to install. Tap on one to download it to your device.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span data-i18n="faq_q2">How do I transpose a song to a different key?</span>
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-answer" data-i18n="faq_a2">Open a song and tap the settings icon in the top right corner. In
+            the chord panel, use the minus and plus buttons next to Transpose to shift the key up or down. The chords
+            update instantly.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span data-i18n="faq_q3">Can I switch between letter and solfege notation?</span>
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-answer" data-i18n="faq_a3">Yes. Open a song in chord view and tap the notation selector next
+            to Chord Notation. You can toggle between letter notation (A, B, C) and solfege notation (Do, Re, Mi) at any
+            time.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span data-i18n="faq_q4">How do I see chord diagrams for guitar or ukulele?</span>
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-answer" data-i18n="faq_a4">In chord view, tap Guitar or Ukulele next to Chords by Instrument.
+            Then tap any chord name displayed above the lyrics to see the full fingering diagram for that chord.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span data-i18n="faq_q5">How do I add a song to my favorites?</span>
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-answer" data-i18n="faq_a5">Open the song and tap the heart icon labeled Favorite in the chord
+            or settings panel. The song will appear in your Favorites section on the Home screen for quick access.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span data-i18n="faq_q6">How do I change the text size?</span>
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-answer" data-i18n="faq_a6">Go to the Settings tab at the bottom of the screen. Under Display,
+            tap the Text Size dropdown and choose from Small, Medium, or Large to adjust the lyrics text size across the
+            app.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span data-i18n="faq_q7">How do I keep the screen on during a service?</span>
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-answer" data-i18n="faq_a7">Go to Settings and enable the Keep Screen On toggle under Display.
+            This will prevent your device from sleeping while you are using the app.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span data-i18n="faq_q8">Is the app available on Android?</span>
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-answer" data-i18n="faq_a8">Yes. Songbooks of Praise is available on both iOS and Android. You
+            can download it from the Apple App Store or the Google Play Store for free.</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section id="features" class="features-section">
+      <div class="section-title" data-i18n="feat_title">App Features</div>
+      <div class="section-subtitle" data-i18n="feat_sub">Everything included in Songbooks of Praise</div>
+      <div class="section-divider"></div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">📖</div>
+          <h3 data-i18n="f1_h3">Lyrics and Songbooks</h3>
+          <p data-i18n="f1_p">Install and manage multiple songbooks in English and Spanish. Search by title, number, or
+            keyword.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎸</div>
+          <h3 data-i18n="f2_h3">Chord View</h3>
+          <p data-i18n="f2_p">See chords displayed above the lyrics in letter or solfege notation. Switch instruments
+            between guitar and ukulele.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎼</div>
+          <h3 data-i18n="f3_h3">Sheet Music</h3>
+          <p data-i18n="f3_p">View full sheet music for supported songs directly inside the app without carrying
+            physical hymnbooks.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔁</div>
+          <h3 data-i18n="f4_h3">Transpose</h3>
+          <p data-i18n="f4_p">Instantly transpose any song to any key. Chords update automatically across the entire
+            song.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🤞</div>
+          <h3 data-i18n="f5_h3">Chord Diagrams</h3>
+          <p data-i18n="f5_p">Tap any chord to see exact fingering diagrams for guitar and ukulele, perfect for
+            beginners and pros alike.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">❤️</div>
+          <h3 data-i18n="f6_h3">Favorites and Recent</h3>
+          <p data-i18n="f6_p">Mark songs as favorites and pick up right where you left off with your recently played
+            history.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" style="margin-bottom: 2rem;">
+      <div class="contact-section">
+        <h2 data-i18n="contact_h2">Contact Support</h2>
+        <p data-i18n="contact_p">Can't find what you're looking for? Send us a message and we will get back to you as
+          soon as possible.</p>
+
+        <form class="contact-form" onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label data-i18n="label_name">Name</label>
+              <input type="text" data-i18n-placeholder="placeholder_name" placeholder="Your name" required>
+            </div>
+            <div class="form-group">
+              <label data-i18n="label_email">Email</label>
+              <input type="email" data-i18n-placeholder="placeholder_email" placeholder="your@email.com" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label data-i18n="label_topic">Topic</label>
+            <select required>
+              <option value="" data-i18n="opt_default">Select a topic</option>
+              <option data-i18n="opt1">Songbooks and Content</option>
+              <option data-i18n="opt2">Chords and Transposing</option>
+              <option data-i18n="opt3">Sheet Music</option>
+              <option data-i18n="opt4">App Settings</option>
+              <option data-i18n="opt5">Bug Report</option>
+              <option data-i18n="opt6">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label data-i18n="label_message">Message</label>
+            <textarea data-i18n-placeholder="placeholder_msg" placeholder="Describe your question or issue..."
+              required></textarea>
+          </div>
+          <button type="submit" class="submit-btn" data-i18n="btn_send">Send Message</button>
+          <div class="success-msg" id="success-msg" data-i18n="success_msg">Thank you! Your message has been sent. We
+            will get back to you shortly.</div>
+          <div class="error-msg" id="error-msg" data-i18n="error_msg">Something went wrong. Please try again later.
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- DOWNLOAD -->
+    <section class="download-section">
+      <div class="section-title" data-i18n="dl_title">Download the App</div>
+      <div class="section-divider" style="margin: 0.5rem auto 0;"></div>
+      <div class="badges">
+        <a href="#" class="store-badge">
+          <img src="./icon.png" alt="" class="icon">
+          <div class="label">
+            <small data-i18n="badge1_small">Download on the</small>
+            <strong data-i18n="badge1_strong">App Store</strong>
+          </div>
+        </a>
+        <a href="#" class="store-badge">
+          <img src="./icon.png" alt="" class="icon">
+          <div class="label">
+            <small data-i18n="badge2_small">Get it on</small>
+            <strong data-i18n="badge2_strong">Google Play</strong>
+          </div>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-links">
+      <a href="#" data-i18n="footer_privacy">Privacy Policy</a>
+      <a href="#" data-i18n="footer_terms">Terms of Use</a>
+      <a href="#contact" data-i18n="footer_contact">Contact</a>
+    </div>
+    <div data-i18n="footer_copy">2026 Songbooks of Praise. All rights reserved.</div>
+  </footer>
+
+  <script>
+    const translations = {
+      en: {
+        page_title: 'Support - Songbooks of Praise',
+        logo_sub: 'Support Center',
+        nav_faq: 'FAQ',
+        nav_features: 'Features',
+        nav_contact: 'Contact',
+        hero_badge: 'Support Center',
+        hero_h1: 'How can we help you?',
+        hero_p: 'Find answers to common questions or reach out to us directly. We are here to help you get the most out of Songbooks of Praise.',
+        hero_btn: 'Contact Support',
+        faq_title: 'Frequently Asked Questions',
+        faq_q1: 'How do I install a new songbook?',
+        faq_a1: 'Go to the Songbooks tab at the bottom of the screen and tap the Available tab. You will see all songbooks ready to install. Tap on one to download it to your device.',
+        faq_q2: 'How do I transpose a song to a different key?',
+        faq_a2: 'Open a song and tap the settings icon in the top right corner. In the chord panel, use the minus and plus buttons next to Transpose to shift the key up or down. The chords update instantly.',
+        faq_q3: 'Can I switch between letter and solfege notation?',
+        faq_a3: 'Yes. Open a song in chord view and tap the notation selector next to Chord Notation. You can toggle between letter notation (A, B, C) and solfege notation (Do, Re, Mi) at any time.',
+        faq_q4: 'How do I see chord diagrams for guitar or ukulele?',
+        faq_a4: 'In chord view, tap Guitar or Ukulele next to Chords by Instrument. Then tap any chord name displayed above the lyrics to see the full fingering diagram for that chord.',
+        faq_q5: 'How do I add a song to my favorites?',
+        faq_a5: 'Open the song and tap the heart icon labeled Favorite in the chord or settings panel. The song will appear in your Favorites section on the Home screen for quick access.',
+        faq_q6: 'How do I change the text size?',
+        faq_a6: 'Go to the Settings tab at the bottom of the screen. Under Display, tap the Text Size dropdown and choose from Small, Medium, or Large to adjust the lyrics text size across the app.',
+        faq_q7: 'How do I keep the screen on during a service?',
+        faq_a7: 'Go to Settings and enable the Keep Screen On toggle under Display. This will prevent your device from sleeping while you are using the app.',
+        faq_q8: 'Is the app available on Android?',
+        faq_a8: 'Yes. Songbooks of Praise is available on both iOS and Android. You can download it from the Apple App Store or the Google Play Store for free.',
+        feat_title: 'App Features',
+        feat_sub: 'Everything included in Songbooks of Praise',
+        f1_h3: 'Lyrics and Songbooks',
+        f1_p: 'Install and manage multiple songbooks in English and Spanish. Search by title, number, or keyword.',
+        f2_h3: 'Chord View',
+        f2_p: 'See chords displayed above the lyrics in letter or solfege notation. Switch instruments between guitar and ukulele.',
+        f3_h3: 'Sheet Music',
+        f3_p: 'View full sheet music for supported songs directly inside the app without carrying physical hymnbooks.',
+        f4_h3: 'Transpose',
+        f4_p: 'Instantly transpose any song to any key. Chords update automatically across the entire song.',
+        f5_h3: 'Chord Diagrams',
+        f5_p: 'Tap any chord to see exact fingering diagrams for guitar and ukulele, perfect for beginners and pros alike.',
+        f6_h3: 'Favorites and Recent',
+        f6_p: 'Mark songs as favorites and pick up right where you left off with your recently played history.',
+        contact_h2: 'Contact Support',
+        contact_p: "Can't find what you're looking for? Send us a message and we will get back to you as soon as possible.",
+        label_name: 'Name',
+        label_email: 'Email',
+        label_topic: 'Topic',
+        label_message: 'Message',
+        placeholder_name: 'Your name',
+        placeholder_email: 'your@email.com',
+        placeholder_msg: 'Describe your question or issue...',
+        opt_default: 'Select a topic',
+        opt1: 'Songbooks and Content',
+        opt2: 'Chords and Transposing',
+        opt3: 'Sheet Music',
+        opt4: 'App Settings',
+        opt5: 'Bug Report',
+        opt6: 'Other',
+        btn_send: 'Send Message',
+        btn_sending: 'Sending...',
+        btn_sent: 'Message Sent',
+        success_msg: 'Thank you! Your message has been sent. We will get back to you shortly.',
+        error_msg: 'Something went wrong. Please try again later.',
+        dl_title: 'Download the App',
+        badge1_small: 'Download on the',
+        badge1_strong: 'App Store',
+        badge2_small: 'Get it on',
+        badge2_strong: 'Google Play',
+        footer_privacy: 'Privacy Policy',
+        footer_terms: 'Terms of Use',
+        footer_contact: 'Contact',
+        footer_copy: '2026 Songbooks of Praise. All rights reserved.',
+      },
+      es: {
+        page_title: 'Soporte - Songbooks of Praise',
+        logo_sub: 'Centro de Soporte',
+        nav_faq: 'Preguntas',
+        nav_features: 'Funciones',
+        nav_contact: 'Contacto',
+        hero_badge: 'Centro de Soporte',
+        hero_h1: '¿En qué podemos ayudarte?',
+        hero_p: 'Encuentra respuestas a preguntas frecuentes o contáctanos directamente. Estamos aquí para que aproveches al máximo Songbooks of Praise.',
+        hero_btn: 'Contactar Soporte',
+        faq_title: 'Preguntas Frecuentes',
+        faq_q1: '¿Cómo instalo un nuevo cancionero?',
+        faq_a1: 'Ve a la pestaña Cancioneros en la parte inferior de la pantalla y toca la pestaña Disponibles. Verás todos los cancioneros listos para instalar. Toca uno para descargarlo a tu dispositivo.',
+        faq_q2: '¿Cómo transpongo una canción a una tonalidad diferente?',
+        faq_a2: 'Abre una canción y toca el ícono de configuración en la esquina superior derecha. En el panel de acordes, usa los botones de menos y más junto a Transponer para subir o bajar la tonalidad. Los acordes se actualizan al instante.',
+        faq_q3: '¿Puedo cambiar entre notación de letras y solfeo?',
+        faq_a3: 'Sí. Abre una canción en vista de acordes y toca el selector de notación junto a Notación de Acordes. Puedes alternar entre notación de letras (A, B, C) y notación de solfeo (Do, Re, Mi) en cualquier momento.',
+        faq_q4: '¿Cómo veo los diagramas de acordes para guitarra o ukulele?',
+        faq_a4: 'En la vista de acordes, toca Guitarra o Ukulele junto a Acordes por Instrumento. Luego toca cualquier nombre de acorde sobre la letra para ver el diagrama de digitación completo de ese acorde.',
+        faq_q5: '¿Cómo agrego una canción a mis favoritos?',
+        faq_a5: 'Abre la canción y toca el ícono de corazón etiquetado como Favorito en el panel de acordes o configuración. La canción aparecerá en tu sección de Favoritos en la pantalla de inicio para acceso rápido.',
+        faq_q6: '¿Cómo cambio el tamaño del texto?',
+        faq_a6: 'Ve a la pestaña Configuración en la parte inferior de la pantalla. En Pantalla, toca el menú desplegable Tamaño de Texto y elige entre Pequeño, Mediano o Grande para ajustar el tamaño del texto en toda la aplicación.',
+        faq_q7: '¿Cómo mantengo la pantalla encendida durante un servicio?',
+        faq_a7: 'Ve a Configuración y activa el interruptor Mantener Pantalla Encendida en Pantalla. Esto evitará que tu dispositivo entre en reposo mientras usas la aplicación.',
+        faq_q8: '¿Está la aplicación disponible en Android?',
+        faq_a8: 'Sí. Songbooks of Praise está disponible en iOS y Android. Puedes descargarlo gratis desde el App Store de Apple o el Google Play Store.',
+        feat_title: 'Funciones de la App',
+        feat_sub: 'Todo lo incluido en Songbooks of Praise',
+        f1_h3: 'Letras y Cancioneros',
+        f1_p: 'Instala y gestiona múltiples cancioneros en inglés y español. Busca por título, número o palabra clave.',
+        f2_h3: 'Vista de Acordes',
+        f2_p: 'Ve los acordes sobre la letra en notación de letras o solfeo. Cambia entre guitarra y ukulele.',
+        f3_h3: 'Partituras',
+        f3_p: 'Visualiza partituras completas de canciones compatibles directamente en la aplicación sin necesidad de cargar himnarios físicos.',
+        f4_h3: 'Transponer',
+        f4_p: 'Transpón cualquier canción a cualquier tonalidad al instante. Los acordes se actualizan automáticamente en toda la canción.',
+        f5_h3: 'Diagramas de Acordes',
+        f5_p: 'Toca cualquier acorde para ver los diagramas de digitación exactos para guitarra y ukulele, ideal para principiantes y expertos.',
+        f6_h3: 'Favoritos y Recientes',
+        f6_p: 'Marca canciones como favoritas y retoma donde lo dejaste con el historial de reproducción reciente.',
+        contact_h2: 'Contactar Soporte',
+        contact_p: '¿No encuentras lo que buscas? Envíanos un mensaje y te responderemos lo antes posible.',
+        label_name: 'Nombre',
+        label_email: 'Correo Electrónico',
+        label_topic: 'Tema',
+        label_message: 'Mensaje',
+        placeholder_name: 'Tu nombre',
+        placeholder_email: 'tu@correo.com',
+        placeholder_msg: 'Describe tu pregunta o problema...',
+        opt_default: 'Selecciona un tema',
+        opt1: 'Cancioneros y Contenido',
+        opt2: 'Acordes y Transposición',
+        opt3: 'Partituras',
+        opt4: 'Configuración de la App',
+        opt5: 'Reporte de Error',
+        opt6: 'Otro',
+        btn_send: 'Enviar Mensaje',
+        btn_sending: 'Enviando...',
+        btn_sent: 'Mensaje Enviado',
+        success_msg: '¡Gracias! Tu mensaje ha sido enviado. Te responderemos en breve.',
+        error_msg: 'Algo salió mal. Por favor intenta de nuevo más tarde.',
+        dl_title: 'Descargar la App',
+        badge1_small: 'Disponible en el',
+        badge1_strong: 'App Store',
+        badge2_small: 'Consíguelo en',
+        badge2_strong: 'Google Play',
+        footer_privacy: 'Política de Privacidad',
+        footer_terms: 'Términos de Uso',
+        footer_contact: 'Contacto',
+        footer_copy: '2026 Songbooks of Praise. Todos los derechos reservados.',
+      }
+    };
+
+    let currentLang = 'en';
+
+    function applyLanguage(lang) {
+      if (!translations[lang]) lang = 'en';
+      currentLang = lang;
+      const t = translations[lang];
+
+      document.documentElement.lang = lang;
+      document.title = t.page_title;
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (t[key] !== undefined) el.textContent = t[key];
+      });
+
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        if (t[key] !== undefined) el.placeholder = t[key];
+      });
+
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+    }
+
+    // Auto-detect language from browser; fallback to English
+    const browserLang = (navigator.language || navigator.userLanguage || 'en').slice(0, 2).toLowerCase();
+    applyLanguage(browserLang === 'es' ? 'es' : 'en');
+
+    function toggleFaq(el) {
+      const item = el.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    }
+
+    async function handleSubmit(e) {
+      e.preventDefault();
+      const t = translations[currentLang];
+      const form = e.target;
+      const btn = form.querySelector('.submit-btn');
+      const successEl = document.getElementById('success-msg');
+      const errorEl = document.getElementById('error-msg');
+
+      successEl.style.display = 'none';
+      errorEl.style.display = 'none';
+      btn.textContent = t.btn_sending;
+      btn.disabled = true;
+
+      const inputs = form.querySelectorAll('input, select, textarea');
+      const name = inputs[0].value.trim();
+      const email = inputs[1].value.trim();
+      const topic = inputs[2].value;
+      const message = inputs[3].value.trim();
+
+      try {
+        const res = await fetch(
+          // 'http://localhost:5342/support/contact'
+          'https://backend.songbooksofpraise.com/support/contact'
+          , {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, email, topic, message, lang: currentLang }),
+          });
+
+        if (res.ok) {
+          successEl.style.display = 'block';
+          btn.textContent = t.btn_sent;
+          form.reset();
+        } else {
+          throw new Error('Server error');
+        }
+      } catch (_) {
+        errorEl.textContent = t.error_msg;
+        errorEl.style.display = 'block';
+        btn.textContent = t.btn_send;
+        btn.disabled = false;
+      }
+    }
+  </script>
+
+</body>
+
+</html>
